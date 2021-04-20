@@ -1,6 +1,9 @@
 package com.example.demo.controller;
 
+import com.example.demo.configuration.JsonProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,9 +13,13 @@ public class DemoController {
   @Value("${sample.text}")
   private String value;
 
+  @Autowired
+  private JsonProperties jsonProperties;
 
-  @RequestMapping("/greeting")
+
+  @GetMapping("/greeting")
   public String example() {
-    return value;
+    String text = value +" "+jsonProperties.getFirstName()+" "+jsonProperties.getLastName();
+    return  text;
   }
 }
