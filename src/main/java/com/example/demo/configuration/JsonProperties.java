@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Configuration
 @PropertySource(
-  value = "classpath:/config/configprops.json",
+  value = "classpath:configprops.json",
   factory = JsonPropertySourceFactory.class)
 @ConfigurationProperties
 public class JsonProperties {
